@@ -1,0 +1,83 @@
+# exp configs
+local_rank: 0
+amp: true
+seed: 42
+
+# logging and checkpoints
+log_wandb: false
+experiment: vit_small_224_moco_ft
+output: ''
+log_interval: 50
+recovery_interval: 0
+
+# model configs
+model: vit_small_moco
+pretrained: true
+drop: 0.0
+drop_path: 0.1 
+
+# training configs
+linear_prob: false
+
+sync_bn: false
+dist_bn: reduce
+batch_size: 128
+epochs: 100
+
+# dataloader
+workers: 4
+pin_mem: false
+train_split: train
+val_split: validation
+validation_batch_size: null
+
+# lr
+lr: 0.001
+sched: cosine
+warmup_epochs: 5
+warmup_lr: 0.0001
+cooldown_epochs: 0
+min_lr: 1.0e-06
+
+# optimizer
+opt: adamw
+opt_betas: null
+opt_eps: null
+weight_decay: 0.05
+momentum: 0.9
+accum_iter: 1
+layer_decay: 0.75
+
+# data aug
+aa: rand-m9-mstd0.5-inc1
+aug_repeats: 0
+aug_splits: 0
+color_jitter: 0.4
+hflip: 0.5
+vflip: 0.0
+img_size: null
+cutmix: 1.0
+cutmix_minmax: null
+mixup: 0.8
+mixup_mode: batch
+mixup_off_epoch: 0
+mixup_prob: 1.0
+mixup_switch_prob: 0.5
+interpolation: ''
+scale:
+- 0.08
+- 1.0
+ratio:
+- 0.75
+- 1.3333333333333333
+smoothing: 0.1 # label smoothing
+train_interpolation: random
+remode: pixel
+reprob: 0.25
+recount: 1
+resplit: false
+
+# resume
+initial_checkpoint: ''
+resume: ''
+start_epoch: null
